@@ -5,6 +5,8 @@ library(tidyverse)
 
 #1. Import data
 
+#The data was taken from the following location, 
+#https://confluence.csiro.au/display/DataSchool/Visualisation
 
 # Mutton Flavour
 # Fatty acids including MOA, EOA and MNA accumulate in lamb meat and can make meat from older animals taste unpleasant. 
