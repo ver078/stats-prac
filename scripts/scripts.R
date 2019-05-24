@@ -80,7 +80,7 @@ ggplot(data = data_2011, mapping = aes(x=C17.0)) +
   geom_point(aes(y=EOA, colour="blue") ) 
   
 
-ggplot(data = data_2011, mapping = aes(x=C17.0)) + 
+ggplot(data = data_2014, mapping = aes(x=C17.0)) + 
   geom_point(aes(y=MOA), colour="red") +
   geom_point(aes(y=MNA), colour="green" ) +
   geom_point(aes(y=EOA), colour="blue" ) 
@@ -200,8 +200,22 @@ lmer_fullfactor_log <- lmer(C17.0~log(MOA)*MNA*EOA +(1|Year), data=data)
 #that didn't work either?
 
 
+
+ggplot(data = data_2011, mapping = aes(x=C17.0, y=log(MOA))) +geom_point()
+ggplot(data = data_2011, mapping = aes(x=C17.0, y=log(MNA))) +geom_point()
+ggplot(data = data_2011, mapping = aes(x=C17.0, y=EOA)) +geom_point()
+
+#Conclusion
+#----------
+#2014 levels of C17 are way lower than 2011 levels.
+#this would seem to indicate that 2011 animals are much older than the 2014 animals.
+#So C17 is a good predictor of MOA, MDA and EOA in young animals but not in older animals.
+
+
 # Was this distructive sampling of the animals? If not, and same animals used in 2014 then a persistant animalId would have been good when data was recorded.
 # So that we could do some blocking, and figure out what are replicates.
 # Animal age might have been good too.
 
 
+library(emmeans)
+emmeans(lmer_add, pairwise~Year)
